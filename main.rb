@@ -83,7 +83,7 @@ module Homebrew
             else
               message + "\n\n"
             end
-  message += '[`action-homebrew-bump-formula`](https://github.com/dawidd6/action-homebrew-bump-formula)'
+  message += 'Created with [`action-homebrew-bump-formula`](https://github.com/dawidd6/action-homebrew-bump-formula).'
 
   # Do the livecheck stuff or not
   if livecheck.false?
@@ -113,6 +113,8 @@ module Homebrew
          '--no-audit',
          '--no-browse',
          "--message=#{message}",
+         "--python-extra-packages=prettytable==3.4.0,jq,pyopenssl",
+         "--python-exclude-packages=six,pyyaml",
          *("--fork-org=#{org}" unless org.blank?),
          *("--version=#{version}" unless is_git),
          *("--url=#{url}" unless is_git),
